@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Movie Data</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="date"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+}
+
+/* Add space between sections */
+section {
+    margin-bottom: 40px; /* Adjust the value as needed */
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit Movie Data</h2>
+
+    <!-- Actor Form -->
+    <section class="actor_section">
+        <form action="edit_actor.php" method="post">
+            <label for="first_name">Actor's First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+            <label for="last_name">Actor's Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+            <label for="birth_date">Birth Date:</label>
+            <input type="date" id="birth_date" name="birth_date" required>
+            <label for="place_of_origin">Place of Origin:</label>
+            <input type="text" id="place_of_origin" name="place_of_origin" required>
+            <input type="submit" value="Save Actor">
+        </form>
+    </section>
+
+
+    <!-- Awards Form -->
+    <section class="awards_section">
+        <form action="edit_award.php" method="post">
+            <label for="award_name">Award Name:</label>
+            <input type="text" id="award_name" name="award_name" required>
+            <label for="year_won">Year Won:</label>
+            <input type="number" id="year_won" name="year_won" required>
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" required>
+            <input type="submit" value="Save Award">
+        </form>
+    </section>
+
+    <!-- Director Form -->
+    <section class="director_section">
+        <form action="edit_director.php" method="post">
+            <label for="director_first_name">Director First Name:</label>
+            <input type="text" id="director_first_name" name="director_first_name" required>
+            <label for="director_last_name">Director Last Name:</label>
+            <input type="text" id="director_last_name" name="director_last_name" required>
+            <label for="director_birth_date">Director Birth Date:</label>
+            <input type="date" id="director_birth_date" name="director_birth_date" required>
+            <label for="director_country_of_origin">Director Country of Origin:</label>
+            <input type="text" id="director_country_of_origin" name="director_country_of_origin" required>
+            <input type="submit" value="Save Director">
+        </form>
+    </section>
+
+    <!-- Genre Form -->
+    <section class="genre_section">
+        <form action="edit_genre.php" method="post">
+            <label for="genre_name">Genre Name:</label>
+            <input type="text" id="genre_name" name="genre_name" required>
+            <label for="genre_description">Genre Description:</label>
+            <textarea id="genre_description" name="genre_description" rows="4" cols="50" required></textarea>
+            <input type="submit" value="Save Genre">
+        </form>
+    </section>
+
+    <!-- Movie Form -->
+    <section class="movie_form_section">
+        <form action="edit_movie.php" method="post">
+            <label for="title">Movie Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="releaseDate">Release Date:</label>
+            <input type="date" id="releaseDate" name="releaseDate" required>
+            <label for="duration">Duration (minutes):</label>
+            <input type="number" id="uration" name="duration" required>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+            <label for="box_office_rating">Box Office Rating:</label>
+            <input type="number" id="box_office_rating" name="box_office_rating" step="0.5" required>
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" required>
+            <label for="studio">Studio:</label>
+            <input type="text" id="studio" name="studio" required>
+            <input type="submit" value="Save Movie">
+
+        </form>
+    </section>
+
+
+</div>
+
+</body>
+</html>

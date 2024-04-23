@@ -28,7 +28,7 @@ if(isset($_POST['award_name']) && isset($_POST['year_won']) && isset($_POST['cat
         $conn->close();
 
         // Redirect back to the main page
-        echo "<script>window.location.href = 'delete_movie_directory.html';</script>";
+        echo "<script>window.location.href = 'delete_movie_directory.php';</script>";
     }
 } else {
     echo "<script>alert('Award information not provided');</script>";

@@ -31,6 +31,6 @@ if($conn->connect_error) {
     $conn->close();
 
     // Redirect back to the HTML page
-    echo "<script>window.location.href = 'movie_directory.html';</script>";
+    echo "<script>window.location.href = 'movie_directory.php';</script>";
 }
 ?>

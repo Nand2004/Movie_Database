@@ -47,7 +47,9 @@ section {
 <body>
 
     <div class="navbar">
-        <a href="delete_movie_directory.html">Delete Section</a>
+        <a href="delete_movie_directory.php">Delete Section</a>
+        <a href="movie_directory.php">Movie Section</a>
+        <a href="change_movie_directory.php">Change Section</a>
     </div>
 
 <div class="container">

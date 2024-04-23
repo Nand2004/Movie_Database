@@ -5,11 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Actor</title>
     <!-- Your CSS styles here -->
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="date"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+}
+
+/* Add space between sections */
+section {
+    margin-bottom: 40px; /* Adjust the value as needed */
+}
+
+    </style>
 </head>
 <body>
 
     <div class="navbar">
-        <a href="movie_directory.html">Movie Directory</a>
+        <a href="delete_movie_directory.php">Delete Section</a>
+        <a href="movie_directory.php">Movie Section</a>
+        <a href="change_movie_directory.php">Change Section</a>
     </div>
 
 <div class="container">

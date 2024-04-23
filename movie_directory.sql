@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2024 at 08:42 PM
+-- Generation Time: Apr 23, 2024 at 08:51 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -41,7 +41,7 @@ CREATE TABLE `actor` (
 
 INSERT INTO `actor` (`actor_id`, `first_name`, `last_name`, `birth_date`, `place_of_origin`) VALUES
 (1, 'DA', 'P', '2020-03-03', 'Salem'),
-(2, 'Nand', 'Patel', '2002-06-05', 'Salem');
+(4, 'Daniel', 'Pullino', '2003-06-05', 'USA');
 
 -- --------------------------------------------------------
 
@@ -56,6 +56,13 @@ CREATE TABLE `awards` (
   `category` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `awards`
+--
+
+INSERT INTO `awards` (`award_id`, `award_name`, `year_won`, `category`) VALUES
+(3, 'Best Cinematography', '2000', 'N/A');
+
 -- --------------------------------------------------------
 
 --
@@ -67,7 +74,7 @@ CREATE TABLE `director` (
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
-  `country_of_origin` enum('USA','UK','Canada','Australia','France','Germany','Japan','Other') DEFAULT NULL
+  `country_of_origin` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -86,13 +93,6 @@ CREATE TABLE `movie` (
   `genre` varchar(255) NOT NULL,
   `studio` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `movie`
---
-
-INSERT INTO `movie` (`movie_id`, `title`, `releaseDate`, `duration`, `description`, `box_office_rating`, `genre`, `studio`) VALUES
-(5, 'Batman', '2022-03-04', '00:01:50', 'Batman fights the riddler', 8.50, 'Mystery', 'Warner Brothers');
 
 --
 -- Indexes for dumped tables
@@ -130,19 +130,19 @@ ALTER TABLE `movie`
 -- AUTO_INCREMENT for table `actor`
 --
 ALTER TABLE `actor`
-  MODIFY `actor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `actor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `awards`
 --
 ALTER TABLE `awards`
-  MODIFY `award_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `award_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `director`
 --
 ALTER TABLE `director`
-  MODIFY `director_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `director_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `movie`

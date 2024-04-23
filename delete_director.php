@@ -27,7 +27,7 @@ if(isset($_POST['first_name']) && isset($_POST['last_name'])) {
         $conn->close();
 
         // Redirect back to the main page
-        echo "<script>window.location.href = 'delete_movie_directory.html';</script>";
+        echo "<script>window.location.href = 'delete_movie_directory.php';</script>";
     }
 } else {
     echo "<script>alert('Actor's first name and last name not provided');</script>";

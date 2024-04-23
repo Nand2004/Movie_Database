@@ -46,6 +46,10 @@ section {
 </head>
 <body>
 
+    <div class="navbar">
+        <a href="delete_movie_directory.html">Delete Section</a>
+    </div>
+
 <div class="container">
     <h2>Edit Movie Data</h2>
 
@@ -69,7 +73,31 @@ section {
     <section class="awards_section">
         <form action="edit_award.php" method="post">
             <label for="award_name">Award Name:</label>
-            <input type="text" id="award_name" name="award_name" required>
+            <select id="award_name" name="award_name" required>
+                <option value="Best Picture">Best Picture</option>
+                <option value="Best Director">Best Director</option>
+                <option value="Best Actor">Best Actor</option>
+                <option value="Best Actress">Best Actress</option>
+                <option value="Best Supporting Actor">Best Supporting Actor</option>
+                <option value="Best Supporting Actress">Best Supporting Actress</option>
+                <option value="Best Original Screenplay">Best Original Screenplay</option>
+                <option value="Best Adapted Screenplay">Best Adapted Screenplay</option>
+                <option value="Best Cinematography">Best Cinematography</option>
+                <option value="Best Film Editing">Best Film Editing</option>
+                <option value="Best Costume Design">Best Costume Design</option>
+                <option value="Best Production Design">Best Production Design</option>
+                <option value="Best Makeup and Hairstyling">Best Makeup and Hairstyling</option>
+                <option value="Best Visual Effects">Best Visual Effects</option>
+                <option value="Best Sound Mixing">Best Sound Mixing</option>
+                <option value="Best Sound Editing">Best Sound Editing</option>
+                <option value="Best Original Score">Best Original Score</option>
+                <option value="Best Original Song">Best Original Song</option>
+                <option value="Best Animated Feature">Best Animated Feature</option>
+                <option value="Best Documentary Feature">Best Documentary Feature</option>
+                <option value="Best Foreign Language Film">Best Foreign Language Film</option>
+                <option value="Other">Other</option>
+            </select>
+            
             <label for="year_won">Year Won:</label>
             <input type="number" id="year_won" name="year_won" required>
             <label for="category">Category:</label>
@@ -81,26 +109,15 @@ section {
     <!-- Director Form -->
     <section class="director_section">
         <form action="edit_director.php" method="post">
-            <label for="director_first_name">Director First Name:</label>
-            <input type="text" id="director_first_name" name="director_first_name" required>
-            <label for="director_last_name">Director Last Name:</label>
-            <input type="text" id="director_last_name" name="director_last_name" required>
-            <label for="director_birth_date">Director Birth Date:</label>
-            <input type="date" id="director_birth_date" name="director_birth_date" required>
-            <label for="director_country_of_origin">Director Country of Origin:</label>
-            <input type="text" id="director_country_of_origin" name="director_country_of_origin" required>
+            <label for="first_name">Director First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+            <label for="last_name">Director Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+            <label for="date_of_birth">Director Birth Date:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" required>
+            <label for="country_of_origin">Director Country of Origin:</label>
+            <input type="text" id="country_of_origin" name="country_of_origin" required>
             <input type="submit" value="Save Director">
-        </form>
-    </section>
-
-    <!-- Genre Form -->
-    <section class="genre_section">
-        <form action="edit_genre.php" method="post">
-            <label for="genre_name">Genre Name:</label>
-            <input type="text" id="genre_name" name="genre_name" required>
-            <label for="genre_description">Genre Description:</label>
-            <textarea id="genre_description" name="genre_description" rows="4" cols="50" required></textarea>
-            <input type="submit" value="Save Genre">
         </form>
     </section>
 

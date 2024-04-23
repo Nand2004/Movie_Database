@@ -65,6 +65,29 @@
         </form>
     </section>
 
+    <section class="delete_director_section">
+        <form action="delete_director.php" method="post">
+            <label for="first_name">Director's First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+            <br>
+            <label for="last_name">Director's Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+            <br>
+            <input type="submit" value="Delete Director">
+        </form>
+    </section>
+
+    <section class="delete_movie_section">
+        <form action="delete_movie.php" method="post">
+            <label for="title">Movie Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="eleaseDate">Release Date:</label>
+            <input type="date" id="releaseDate" name="releaseDate" required>
+            <input type="submit" value="Delete Movie">
+        </form>
+    </section>
+    
+
 </div>
 
 </body>

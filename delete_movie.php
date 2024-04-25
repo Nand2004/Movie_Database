@@ -1,30 +1,40 @@
 <?php
-// Get form data
-$title = $_POST['title'];
-$releaseDate = $_POST['releaseDate'];
+// Check if movie ID is provided
+if(isset($_POST['id'])) {
+    $id = $_POST['id'];
 
-// Database Connection
-$conn = new mysqli('localhost', 'root', '', 'movie_directory');
+    // Database Connection
+    $conn = new mysqli('localhost', 'root', '', 'movie_directory');
+    if ($conn->connect_error) {
+        die('Connection Failed : '.$conn->connect_error);
+    } else {
+        // Prepare and bind the SQL statement with placeholders
+        $stmt = $conn->prepare("DELETE FROM movie WHERE movie_id = ?");
+        
+        if ($stmt === false) {
+            echo "<script>alert('Error preparing statement: " . $conn->error . "');</script>"; // Debug statement
+        } else {
+            // Bind parameters to the statement
+            $stmt->bind_param("i", $id);
+            
+            // Execute the statement
+            if ($stmt->execute() === TRUE) {
+                echo "<script>alert('Movie deleted successfully');</script>";
+            } else {
+                echo "<script>alert('Error executing query: " . $stmt->error . "');</script>"; // Debug statement
+            }
+    
+            // Close the statement
+            $stmt->close();
+        }
+        
+        // Close the connection
+        $conn->close();
 
-// Check connection
-if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
-}
-
-// Prepare and execute SQL statement to delete the movie
-$stmt = $conn->prepare("DELETE FROM movie WHERE title = ? AND releaseDate = ?");
-$stmt->bind_param("ss", $title, $releaseDate);
-
-if ($stmt->execute() === TRUE) {
-    echo "<script>alert('Movie deleted successfully');</script>";
+        // Redirect back to the main page
+        echo "<script>window.location.href = 'delete_movie_directory.php';</script>";
+    }
 } else {
-    echo "<script>alert('Error deleting movie: " . $conn->error . "');</script>";
+    echo "<script>alert('Movie ID not provided');</script>";
 }
-
-// Close the statement and connection
-$stmt->close();
-$conn->close();
-
-// Redirect back to the HTML page
-echo "<script>window.location.href = 'movie_directory.php';</script>";
 ?>

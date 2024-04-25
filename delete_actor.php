@@ -1,8 +1,7 @@
 <?php
-// Check if actor's first name and last name are provided
-if(isset($_POST['first_name']) && isset($_POST['last_name'])) {
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
+// Check if actor ID is provided
+if(isset($_POST['id'])) {
+    $id = $_POST['id'];
 
     // Database Connection
     $conn = new mysqli('localhost', 'root', '', 'movie_directory');
@@ -10,26 +9,32 @@ if(isset($_POST['first_name']) && isset($_POST['last_name'])) {
         die('Connection Failed : '.$conn->connect_error);
     } else {
         // Prepare and bind the SQL statement with placeholders
-        $stmt = $conn->prepare("DELETE FROM actor WHERE first_name = ? AND last_name = ?");
+        $stmt = $conn->prepare("DELETE FROM actor WHERE actor_id = ?");
         
-        // Bind parameters to the statement
-        $stmt->bind_param("ss", $first_name, $last_name);
-        
-        // Execute the statement
-        if ($stmt->execute() === TRUE) {
-            echo "<script>alert('Actor deleted successfully');</script>";
+        if ($stmt === false) {
+            echo "<script>alert('Error preparing statement: " . $conn->error . "');</script>"; // Debug statement
         } else {
-            echo "<script>alert('Error: " . $conn->error . "');</script>";
+            // Bind parameters to the statement
+            $stmt->bind_param("i", $id);
+            
+            // Execute the statement
+            if ($stmt->execute() === TRUE) {
+                echo "<script>alert('Actor deleted successfully');</script>";
+            } else {
+                echo "<script>alert('Error executing query: " . $stmt->error . "');</script>"; // Debug statement
+            }
+    
+            // Close the statement
+            $stmt->close();
         }
-
-        // Close the statement and connection
-        $stmt->close();
+        
+        // Close the connection
         $conn->close();
 
         // Redirect back to the main page
         echo "<script>window.location.href = 'delete_movie_directory.php';</script>";
     }
 } else {
-    echo "<script>alert('Actor's first name and last name not provided');</script>";
+    echo "<script>alert('Actor ID not provided');</script>";
 }
 ?>

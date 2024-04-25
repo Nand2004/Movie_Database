@@ -1,133 +1,204 @@
+<?php
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Include connection file
+include 'includes/connection.php';
+
+// Function to display actors
+function displayActors($conn) {
+    $output = "<h3>Actors</h3>";
+    $sql = "SELECT * FROM actor";
+    $result = $conn->query($sql);
+
+    if ($result === false) {
+        // Query failed
+        $output .= "Error executing the query: " . $conn->error;
+    } elseif ($result->num_rows > 0) {
+        // Fetch and display actors
+        $output .= "<table border='1'>";
+        $output .= "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Birth Date</th><th>Place of Origin</th><th>Action</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            $output .= "<tr>";
+            $output .= "<td>" . $row['actor_id'] . "</td>";
+            $output .= "<td>" . $row['first_name'] . "</td>";
+            $output .= "<td>" . $row['last_name'] . "</td>";
+            $output .= "<td>" . $row['birth_date'] . "</td>";
+            $output .= "<td>" . $row['place_of_origin'] . "</td>";
+            $output .= "<td>
+            <form action='delete_actor.php' method='POST'>
+                <input type='hidden' name='id' value='" . $row['actor_id'] . "'>
+                <button type='submit'>Delete</button>
+            </form>
+        </td>";
+            $output .= "</tr>";
+        }
+        $output .= "</table>";
+    } else {
+        // No actors found
+        $output .= "0 results";
+    }
+    echo $output;
+}
+// Function to display movies
+function displayMovies($conn) {
+    $output = "<h3>Movies</h3>";
+    $sql = "SELECT * FROM movie";
+    $result = $conn->query($sql);
+
+    if ($result === false) {
+        $output .= "Error executing the query: " . $conn->error;
+    } elseif ($result->num_rows > 0) {
+        $output .= "<table border='1'>";
+        $output .= "<tr><th>ID</th><th>Title</th><th>Release Date</th><th>Duration</th><th>Description</th><th>Box Office Rating</th><th>Genre</th><th>Studio</th><th>Action</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            $output .= "<tr>";
+            $output .= "<td>" . $row['movie_id'] . "</td>";
+            $output .= "<td>" . $row['title'] . "</td>";
+            $output .= "<td>" . $row['releaseDate'] . "</td>";
+            $output .= "<td>" . $row['duration'] . "</td>";
+            $output .= "<td>" . $row['description'] . "</td>";
+            $output .= "<td>" . $row['box_office_rating'] . "</td>";
+            $output .= "<td>" . $row['genre'] . "</td>";
+            $output .= "<td>" . $row['studio'] . "</td>";
+            $output .= "<td>
+            <form action='delete_movie.php' method='POST'>
+                <input type='hidden' name='id' value='" . $row['movie_id'] . "'>
+                <button type='submit'>Delete</button>
+            </form>
+        </td>";
+            $output .= "</tr>";
+        }
+        $output .= "</table>";
+    } else {
+        $output .= "0 results";
+    }
+    echo $output;
+}
+
+// Function to display directors
+function displayDirectors($conn) {
+    $output = "<h3>Directors</h3>";
+    $sql = "SELECT * FROM director";
+    $result = $conn->query($sql);
+
+    if ($result === false) {
+        $output .= "Error executing the query: " . $conn->error;
+    } elseif ($result->num_rows > 0) {
+        $output .= "<table border='1'>";
+        $output .= "<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Country of Origin</th><th>Action</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            $output .= "<tr>";
+            $output .= "<td>" . $row['director_id'] . "</td>";
+            $output .= "<td>" . $row['first_name'] . "</td>";
+            $output .= "<td>" . $row['last_name'] . "</td>";
+            $output .= "<td>" . $row['date_of_birth'] . "</td>";
+            $output .= "<td>" . $row['country_of_origin'] . "</td>";
+            $output .= "<td>
+            <form action='delete_director.php' method='POST'>
+                <input type='hidden' name='id' value='" . $row['director_id'] . "'>
+                <button type='submit'>Delete</button>
+            </form>
+        </td>";
+            $output .= "</tr>";
+        }
+        $output .= "</table>";
+    } else {
+        $output .= "0 results";
+    }
+    echo $output;
+}
+
+// Function to display awards
+// Function to display awards
+function displayAwards($conn) {
+    $output = "<h3>Awards</h3>";
+    $sql = "SELECT * FROM awards";
+    $result = $conn->query($sql);
+
+    if ($result === false) {
+        $output .= "Error executing the query: " . $conn->error;
+    } elseif ($result->num_rows > 0) {
+        $output .= "<table border='1'>";
+        $output .= "<tr><th>ID</th><th>Award Name</th><th>Year Won</th><th>Category</th><th>Action</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            $output .= "<tr>";
+            $output .= "<td>" . $row['award_id'] . "</td>";
+            $output .= "<td>" . $row['award_name'] . "</td>";
+            $output .= "<td>" . $row['year_won'] . "</td>";
+            $output .= "<td>" . $row['category'] . "</td>";
+            // Add the delete button with the award ID as a POST parameter
+            $output .= "<td>
+                            <form action='delete_award.php' method='POST'>
+                                <input type='hidden' name='id' value='" . $row['award_id'] . "'>
+                                <button type='submit'>Delete</button>
+                            </form>
+                        </td>";
+            $output .= "</tr>";
+        }
+        $output .= "</table>";
+    } else {
+        $output .= "0 results";
+    }
+    echo $output;
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Actor</title>
-    <!-- Your CSS styles here -->
+    <title>Delete Movie Data</title>
     <style>
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        input[type="text"], input[type="date"], input[type="number"], textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        .container {
-            width: 50%;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f2f2f2;
-}
-
-/* Add space between sections */
-section {
-    margin-bottom: 40px; /* Adjust the value as needed */
-}
-
+        /* Your CSS styles here */
     </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <a href="delete_movie_directory.php">Delete Section</a>
-        <a href="movie_directory.php">Movie Section</a>
-        <a href="change_movie_directory.php">Change Section</a>
-    </div>
+<div class="navbar">
+    <a href="delete_movie_directory.php">Delete Section</a>
+    <a href="movie_directory.php">Movie Section</a>
+    <a href="change_movie_directory.php">Change Section</a>
+</div>
 
 <div class="container">
-    <h2>Delete Actor</h2>
+    <h2>Delete Movie Data</h2>
 
-
-    <!-- Delete Actor Form -->
-    <section class="delete_actor_section">
-        <form action="delete_actor.php" method="post">
-            <label for="first_name">Actor's First Name:</label>
-            <input type="text" id="first_name" name="first_name" required>
-            <br>
-            <label for="last_name">Actor's Last Name:</label>
-            <input type="text" id="last_name" name="last_name" required>
-            <br>
-            <input type="submit" value="Delete Actor">
-        </form>
+    <!-- Actor Section -->
+    <section class="actor_section">
+        <?php 
+        // Call the function to display actors
+        displayActors($connection);
+        ?>
     </section>
 
-    <section class="delete_awards_section">
-        <form action="delete_award.php" method="post">
-            <label for="award_name">Award Name:</label>
-            <select id="award_name" name="award_name" required>
-                <option value="Best Picture">Best Picture</option>
-                <option value="Best Director">Best Director</option>
-                <option value="Best Actor">Best Actor</option>
-                <option value="Best Actress">Best Actress</option>
-                <option value="Best Supporting Actor">Best Supporting Actor</option>
-                <option value="Best Supporting Actress">Best Supporting Actress</option>
-                <option value="Best Original Screenplay">Best Original Screenplay</option>
-                <option value="Best Adapted Screenplay">Best Adapted Screenplay</option>
-                <option value="Best Cinematography">Best Cinematography</option>
-                <option value="Best Film Editing">Best Film Editing</option>
-                <option value="Best Costume Design">Best Costume Design</option>
-                <option value="Best Production Design">Best Production Design</option>
-                <option value="Best Makeup and Hairstyling">Best Makeup and Hairstyling</option>
-                <option value="Best Visual Effects">Best Visual Effects</option>
-                <option value="Best Sound Mixing">Best Sound Mixing</option>
-                <option value="Best Sound Editing">Best Sound Editing</option>
-                <option value="Best Original Score">Best Original Score</option>
-                <option value="Best Original Song">Best Original Song</option>
-                <option value="Best Animated Feature">Best Animated Feature</option>
-                <option value="Best Documentary Feature">Best Documentary Feature</option>
-                <option value="Best Foreign Language Film">Best Foreign Language Film</option>
-                <option value="Other">Other</option>
-            </select>
-            
-            <label for="year_won">Year Won:</label>
-            <input type="number" id="year_won" name="year_won" required>
-            <label for="category">Category:</label>
-            <input type="text" id="category" name="category" required>
-            <input type="submit" value="Delete Award">
-        </form>
+    <!-- Movie Section -->
+    <section class="movie_section">
+        <?php 
+        // Call the function to display movies
+        displayMovies($connection);
+        ?>
     </section>
 
-    <section class="delete_director_section">
-        <form action="delete_director.php" method="post">
-            <label for="first_name">Director's First Name:</label>
-            <input type="text" id="first_name" name="first_name" required>
-            <br>
-            <label for="last_name">Director's Last Name:</label>
-            <input type="text" id="last_name" name="last_name" required>
-            <br>
-            <input type="submit" value="Delete Director">
-        </form>
+    <!-- Director Section -->
+    <section class="director_section">
+        <?php 
+        // Call the function to display directors
+        displayDirectors($connection);
+        ?>
     </section>
 
-    <section class="delete_movie_section">
-        <form action="delete_movie.php" method="post">
-            <label for="title">Movie Title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="eleaseDate">Release Date:</label>
-            <input type="date" id="releaseDate" name="releaseDate" required>
-            <input type="submit" value="Delete Movie">
-        </form>
+    <!-- Awards Section -->
+    <section class="awards_section">
+        <?php 
+        // Call the function to display awards
+        displayAwards($connection);
+        ?>
     </section>
-    
 
 </div>
 

@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Movie Data</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Custom styles */
         label {
             display: block;
             margin-bottom: 10px;
@@ -35,44 +38,58 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f2f2f2;
-}
-
-/* Add space between sections */
-section {
-    margin-bottom: 40px; /* Adjust the value as needed */
-}
-
+        }
+        /* Add space between sections */
+        section {
+            margin-bottom: 40px; /* Adjust the value as needed */
+        }
     </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <a href="delete_movie_directory.php">Delete Section</a>
-        <a href="movie_directory.php">Movie Section</a>
-        <a href="change_movie_directory.php">Change Section</a>
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Movie Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="delete_movie_directory.php">Delete Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="movie_directory.php">Movie Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="change_movie_directory.php">Change Section</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
 <div class="container">
-    <h2>Edit Movie Data</h2>
+    <h2 class="text-center">Edit Movie Data</h2>
 
     <!-- Actor Form -->
     <section class="actor_section">
         <form action="edit_actor.php" method="post">
             <label for="first_name">Actor's First Name:</label>
-            <input type="text" id="first_name" name="first_name" required>
+            <input type="text" id="first_name" name="first_name" value="<?php echo $actor_first_name; ?>" required>
             <label for="last_name">Actor's Last Name:</label>
-            <input type="text" id="last_name" name="last_name" required>
+            <input type="text" id="last_name" name="last_name" value="<?php echo $actor_last_name; ?>" required>
             <label for="birth_date">Birth Date:</label>
-            <input type="date" id="birth_date" name="birth_date" required>
+            <input type="date" id="birth_date" name="birth_date" value="<?php echo $actor_birth_date; ?>" required>
             <label for="place_of_origin">Place of Origin:</label>
-            <input type="text" id="place_of_origin" name="place_of_origin" required>
+            <input type="text" id="place_of_origin" name="place_of_origin" value="<?php echo $actor_place_of_origin; ?>" required>
             <input type="submit" value="Save Actor">
         </form>
     </section>
 
 
-    <!-- Awards Form -->
-    <section class="awards_section">
+        <!-- Awards Form -->
+        <section class="awards_section">
         <form action="edit_award.php" method="post">
             <label for="award_name">Award Name:</label>
             <select id="award_name" name="award_name" required>
@@ -101,7 +118,7 @@ section {
             </select>
             
             <label for="year_won">Year Won:</label>
-            <input type="number" id="year_won" name="year_won" required>
+            <input type="number" id="year_won" name="year_won" class="form-control" placeholder="Enter year" required>
             <label for="category">Category:</label>
             <input type="text" id="category" name="category" required>
             <input type="submit" value="Save Award">
@@ -131,7 +148,7 @@ section {
             <label for="releaseDate">Release Date:</label>
             <input type="date" id="releaseDate" name="releaseDate" required>
             <label for="duration">Duration (minutes):</label>
-            <input type="number" id="uration" name="duration" required>
+            <input type="number" id="duration" name="duration" required>
             <label for="description">Description:</label>
             <textarea id="description" name="description" rows="4" cols="50" required></textarea>
             <label for="box_office_rating">Box Office Rating:</label>
@@ -147,6 +164,9 @@ section {
 
 
 </div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

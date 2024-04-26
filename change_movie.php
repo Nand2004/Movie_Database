@@ -49,30 +49,67 @@ if(isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Movie</title>
-    <style>
-        /* Your CSS styles here */
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Edit Movie</h2>
-    <form method="POST">
-        <input type="hidden" name="id" value="<?php echo $row['movie_id']; ?>">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" value="<?php echo $row['title']; ?>"><br>
-        <label for="releaseDate">Release Date:</label><br>
-        <input type="text" id="releaseDate" name="releaseDate" value="<?php echo $row['releaseDate']; ?>"><br>
-        <label for="duration">Duration:</label><br>
-        <input type="text" id="duration" name="duration" value="<?php echo $row['duration']; ?>"><br>
-        <label for="description">Description:</label><br>
-        <input type="text" id="description" name="description" value="<?php echo $row['description']; ?>"><br>
-        <label for="box_office_rating">Box Office Rating:</label><br>
-        <input type="text" id="box_office_rating" name="box_office_rating" value="<?php echo $row['box_office_rating']; ?>"><br>
-        <label for="genre">Genre:</label><br>
-        <input type="text" id="genre" name="genre" value="<?php echo $row['genre']; ?>"><br>
-        <label for="studio">Studio:</label><br>
-        <input type="text" id="studio" name="studio" value="<?php echo $row['studio']; ?>"><br>
-        <button type="submit">Update</button>
-    </form>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Movie Directory</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="delete_movie_directory.php">Delete Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="movie_directory.php">Movie Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="change_movie_directory.php">Change Section</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Edit Movie</h2>
+        <form method="POST">
+            <input type="hidden" name="id" value="<?php echo $row['movie_id']; ?>">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" value="<?php echo $row['title']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="releaseDate" class="form-label">Release Date:</label>
+                <input type="text" class="form-control" id="releaseDate" name="releaseDate" value="<?php echo $row['releaseDate']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="duration" class="form-label">Duration:</label>
+                <input type="text" class="form-control" id="duration" name="duration" value="<?php echo $row['duration']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <input type="text" class="form-control" id="description" name="description" value="<?php echo $row['description']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="box_office_rating" class="form-label">Box Office Rating:</label>
+                <input type="text" class="form-control" id="box_office_rating" name="box_office_rating" value="<?php echo $row['box_office_rating']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="genre" class="form-label">Genre:</label>
+                <input type="text" class="form-control" id="genre" name="genre" value="<?php echo $row['genre']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="studio" class="form-label">Studio:</label>
+                <input type="text" class="form-control" id="studio" name="studio" value="<?php echo $row['studio']; ?>">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
 </body>
 </html>
 <?php
@@ -82,6 +119,4 @@ if(isset($_GET['id'])) {
 } else {
     echo "Movie ID parameter is missing.";
 }
-
-
 ?>

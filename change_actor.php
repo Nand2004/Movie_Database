@@ -46,24 +46,55 @@ if(isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Actor</title>
-    <style>
-        /* Your CSS styles here */
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Edit Actor</h2>
-    <form method="POST">
-        <input type="hidden" name="id" value="<?php echo $row['actor_id']; ?>">
-        <label for="first_name">First Name:</label><br>
-        <input type="text" id="first_name" name="first_name" value="<?php echo $row['first_name']; ?>"><br>
-        <label for="last_name">Last Name:</label><br>
-        <input type="text" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>"><br>
-        <label for="birth_date">Birth Date:</label><br>
-        <input type="text" id="birth_date" name="birth_date" value="<?php echo $row['birth_date']; ?>"><br>
-        <label for="place_of_origin">Place of Origin:</label><br>
-        <input type="text" id="place_of_origin" name="place_of_origin" value="<?php echo $row['place_of_origin']; ?>"><br>
-        <button type="submit">Update</button>
-    </form>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Movie Directory</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="delete_movie_directory.php">Delete Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="movie_directory.php">Movie Section</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="change_movie_directory.php">Change Section</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Edit Actor</h2>
+        <form method="POST">
+            <input type="hidden" name="id" value="<?php echo $row['actor_id']; ?>">
+            <div class="mb-3">
+                <label for="first_name" class="form-label">First Name:</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo $row['first_name']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name:</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="birth_date" class="form-label">Birth Date:</label>
+                <input type="text" class="form-control" id="birth_date" name="birth_date" value="<?php echo $row['birth_date']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="place_of_origin" class="form-label">Place of Origin:</label>
+                <input type="text" class="form-control" id="place_of_origin" name="place_of_origin" value="<?php echo $row['place_of_origin']; ?>">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
 </body>
 </html>
 <?php
@@ -73,5 +104,4 @@ if(isset($_GET['id'])) {
 } else {
     echo "Actor ID parameter is missing.";
 }
-
 ?>
